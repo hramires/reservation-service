@@ -6,7 +6,7 @@ volumes:
 services: 
 
   mysql:
-    image: mysql:latest
+    image: mysql:mysql:8.0.18
     container_name: mysql-server
     environment:
       MYSQL_DATABASE: 'reservation-service'
