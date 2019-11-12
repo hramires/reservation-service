@@ -1,0 +1,37 @@
+version: '3.5'
+
+volumes:
+  mysql-db:
+
+services: 
+
+  mysql:
+    image: mysql:mysql:8.0.18
+    container_name: mysql-server
+    environment:
+      MYSQL_DATABASE: 'reservation-service'
+      MYSQL_USER: 'reservation'
+      MYSQL_PASSWORD: 'reservation@123'
+      MYSQL_ROOT_PASSWORD: 'root@123'
+    ports:
+      - "3306:3306"
+    networks: 
+      - reservation-service-network
+    volumes:
+      - mysql-db:/var/lib/mysql
+
+  reservation-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: jsouzajava/reservation-service:latest
+    container_name: reservation-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    networks:
+      - reservation-service-network
+
+networks: 
+  reservation-service-network:
