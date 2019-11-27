@@ -6,7 +6,7 @@ volumes:
 services: 
 
   mysql:
-    image: mysql:mysql:8.0.18
+    image: mysql:8.0.18
     container_name: mysql-server
     environment:
       MYSQL_DATABASE: 'reservation-service'
@@ -19,19 +19,6 @@ services:
       - reservation-service-network
     volumes:
       - mysql-db:/var/lib/mysql
-
-  reservation-service:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: jsouzajava/reservation-service:latest
-    container_name: reservation-service
-    ports:
-      - "8080:8080"
-    depends_on:
-      - mysql
-    networks:
-      - reservation-service-network
 
 networks: 
   reservation-service-network:
