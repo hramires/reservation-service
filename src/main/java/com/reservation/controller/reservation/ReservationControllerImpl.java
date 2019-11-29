@@ -21,7 +21,7 @@ public class ReservationControllerImpl implements ReservationController {
 
     @Override
     public ResponseEntity<ReservationResponse> getReservations() {
-        return ResponseEntity.status(HttpStatus.OK).body(new ReservationResponse(Arrays.asList(new ReservationDto())));
+        return ResponseEntity.status(HttpStatus.OK).body(reservationService.getAll());
     }
 
     @Override
