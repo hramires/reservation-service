@@ -21,9 +21,9 @@ public class ReservationService {
     private UserService userService;
 
     public void save(ReservationRequest reservationRequest) {
-        User user = userService.findByDocument(reservationRequest.getCpf());
+        //User user = userService.findByDocument(reservationRequest.getCpf());
         Reservation reservation = reservationConverter.convert(reservationRequest);
-        reservation.setUser(user);
+        //reservation.setUser(user);
         reservationRepository.save(reservation);
     }
 

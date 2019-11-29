@@ -23,6 +23,12 @@ public class Product {
         this.price = price;
     }
 
+    public Product(String description, Double price, User user) {
+        this.description = description;
+        this.price = price;
+        this.user = user;
+    }
+
     public String getDescription() {
         return description;
     }
