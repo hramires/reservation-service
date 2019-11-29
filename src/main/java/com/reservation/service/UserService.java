@@ -22,7 +22,11 @@ public class UserService {
     private UserConverter userConverter;
 
     public User findByDocument(String cpf) {
-        return userRepository.findByDocument(cpf).get();
+        Optional<User> optionalUser = userRepository.findByDocument(cpf);
+        if (optionalUser.isPresent()) {
+            return userRepository.findByDocument(cpf).get();
+        }
+        return null;
     }
 
     public void save(List<UserDto> usersDto) {
