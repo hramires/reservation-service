@@ -64,4 +64,14 @@ public class User {
         this.active = active;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", document='" + document + '\'' +
+                ", phone='" + phone + '\'' +
+                ", active=" + active +
+                '}';
+    }
 }

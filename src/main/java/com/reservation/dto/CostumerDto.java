@@ -12,6 +12,11 @@ public class CostumerDto {
     public CostumerDto() {
     }
 
+    public CostumerDto(String name, String cpf) {
+        this.name = name;
+        this.cpf = cpf;
+    }
+
     public CostumerDto(String name, String cpf, Integer roomsQuantity, String checkin, String checkout, Double payment) {
         this.name = name;
         this.cpf = cpf;
