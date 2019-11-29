@@ -39,11 +39,13 @@ public class ReservationControllerImpl implements ReservationController {
 
     @Override
     public ResponseEntity checkout(ReservationCheckoutRequest reservationCheckoutRequest) {
+        reservationService.remove(reservationCheckoutRequest);
         return ResponseEntity.ok().build();
     }
 
     @Override
     public ResponseEntity cancel(ReservationCancelRequest reservationCheckoutRequest) {
+        reservationService.remove(reservationCheckoutRequest);
         return ResponseEntity.ok().build();
     }
 

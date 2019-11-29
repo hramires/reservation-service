@@ -1,5 +1,7 @@
 package com.reservation.service;
 
+import com.reservation.controller.reservation.request.ReservationCancelRequest;
+import com.reservation.controller.reservation.request.ReservationCheckoutRequest;
 import com.reservation.controller.reservation.request.ReservationRequest;
 import com.reservation.controller.reservation.response.ReservationResponse;
 import com.reservation.converter.ReservationConverter;
@@ -45,5 +47,15 @@ public class ReservationService {
         ReservationResponse reservationResponse = reservationConverter.convert(reservations);
         reservationResponse = reservationConverter.adjustProductAndValue(reservationResponse);
         return reservationResponse;
+    }
+
+    public void remove(ReservationCancelRequest reservationCancelRequest) {
+        List<Reservation> reservations = reservationRepository.findByUserDocument(reservationCancelRequest.getCpf());
+        reservationRepository.deleteById(reservations.get(0).getId());
+    }
+
+    public void remove(ReservationCheckoutRequest reservationCheckoutRequest) {
+        List<Reservation> reservations = reservationRepository.findByUserDocument(reservationCheckoutRequest.getCpf());
+        reservationRepository.deleteById(reservations.get(0).getId());
     }
 }
