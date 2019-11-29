@@ -22,7 +22,6 @@ public class UserControllerImpl implements UserController {
     private AmazonService amazonService;
 
     @Override
-    @CrossOrigin(origins = "http://localhost:8080")
     public ResponseEntity<CostumerResponse> getCostumers() {
         return ResponseEntity.ok().body(new CostumerResponse(Arrays.asList(new CostumerDto("Jonathan", "0123456789", 2, "12/08/2019",
                 "19/08/2019", 150.0))));
