@@ -22,6 +22,10 @@ public class ReservationConverter {
     }
 
     private ReservationDto convert(Reservation reservation) {
-        return new ReservationDto(null, reservation.getCheckin(), reservation.getCheckout(), reservation.getRoomsQuantity());
+        return new ReservationDto(getUserName(reservation), reservation.getCheckin(), reservation.getCheckout(), reservation.getRoomsQuantity());
+    }
+
+    private String getUserName(Reservation reservation) {
+        return reservation.getUser() != null ? reservation.getUser().getName() : "";
     }
 }
