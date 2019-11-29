@@ -1,5 +1,6 @@
 package com.reservation.service;
 
+import com.reservation.domain.User;
 import com.reservation.dto.ProductDto;
 import com.reservation.controller.product.request.ProductRequest;
 import com.reservation.controller.product.response.ProductResponse;
@@ -21,8 +22,11 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private UserService userService;
+
     public ProductResponse addProduct(ProductRequest productRequest) {
-        // Busca user
+        User user = userService.findByCpf(productRequest.getDocument());
         List<Product> products = productConverter.convertToEntities(productRequest.getProducts());
         List<Product> productsSaved = products.stream().map(product -> productRepository.save(product)).collect(Collectors.toList());
         List<ProductDto> productsToResponse = productConverter.convertToResponse(productsSaved);
