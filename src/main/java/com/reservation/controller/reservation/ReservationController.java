@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 public interface ReservationController {
 
-    @CrossOrigin
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("")
     @ApiOperation(value = "API used to get a list of reservations", response = ReservationResponse.class)
     public ResponseEntity<ReservationResponse> getReservations();
 
-    @CrossOrigin
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("")
     @ApiOperation(value = "API used to book a new reservation", response = ReservationResponse.class)
     public ResponseEntity postReservations(@RequestBody ReservationRequest reservationRequest);

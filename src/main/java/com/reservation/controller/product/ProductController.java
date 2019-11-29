@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 public interface ProductController {
 
-    @CrossOrigin
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("")
     @ApiOperation(value = "API used to insert a list of products that user consumes", response = ProductResponse.class)
     public ResponseEntity<ProductResponse> postProducts(ProductRequest productRequest);
