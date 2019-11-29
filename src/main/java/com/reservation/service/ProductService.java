@@ -6,6 +6,7 @@ import com.reservation.controller.product.request.ProductRequest;
 import com.reservation.controller.product.response.ProductResponse;
 import com.reservation.converter.ProductConverter;
 import com.reservation.domain.Product;
+import com.reservation.dto.ReservationDto;
 import com.reservation.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,4 +34,8 @@ public class ProductService {
         return new ProductResponse(productRequest.getDocument(), productsToResponse);
     }
 
+    public List<ProductDto> findByUser(ReservationDto reservationDto) {
+        List<Product> products = productRepository.findByUserDocument(reservationDto.getCpf());
+        return productConverter.convertToResponse(products);
+    }
 }

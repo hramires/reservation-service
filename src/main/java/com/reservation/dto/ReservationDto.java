@@ -1,5 +1,7 @@
 package com.reservation.dto;
 
+import java.util.List;
+
 public class ReservationDto {
 
     private String name;
@@ -8,6 +10,7 @@ public class ReservationDto {
     private Integer roomsQuantity;
     private Double payment;
     private String cpf;
+    private List<ProductDto> products;
 
     public ReservationDto() {
     }
@@ -67,5 +70,13 @@ public class ReservationDto {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public List<ProductDto> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<ProductDto> products) {
+        this.products = products;
     }
 }
