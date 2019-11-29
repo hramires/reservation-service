@@ -26,6 +26,7 @@ public class UserService {
 
     public void save(List<UserDto> usersDto) {
         List<User> users = userConverter.convertFromDto(usersDto);
+        users.stream().forEach(System.out::println);
         users.stream().map(user -> userRepository.save(user));
     }
 
