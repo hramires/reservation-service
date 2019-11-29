@@ -26,11 +26,11 @@ public class UserService {
 
     public void save(List<UserDto> usersDto) {
         List<User> users = userConverter.convertFromDto(usersDto);
-        users.stream().forEach(System.out::println);
-        users.stream().map(user -> userRepository.save(user));
+        users.stream().map(user -> userRepository.save(user)).collect(Collectors.toList());
     }
 
     public List<CostumerDto> findAll() {
-        return userConverter.convertFromDomain(userRepository.findAll());
+        List<User> users = userRepository.findAll();
+        return userConverter.convertFromDomain(users);
     }
 }
