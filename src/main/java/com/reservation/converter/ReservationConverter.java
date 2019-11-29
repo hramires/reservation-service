@@ -22,10 +22,15 @@ public class ReservationConverter {
     }
 
     private ReservationDto convert(Reservation reservation) {
-        return new ReservationDto(getUserName(reservation), reservation.getCheckin(), reservation.getCheckout(), reservation.getRoomsQuantity(), 150.0);
+        return new ReservationDto(getUserName(reservation), reservation.getCheckin(), reservation.getCheckout(), reservation.getRoomsQuantity(), 150.0,
+                getUserCpf(reservation));
     }
 
     private String getUserName(Reservation reservation) {
         return reservation.getUser() != null ? reservation.getUser().getName() : "";
+    }
+
+    private String getUserCpf(Reservation reservation) {
+        return reservation.getUser() != null ? reservation.getUser().getDocument() : "";
     }
 }

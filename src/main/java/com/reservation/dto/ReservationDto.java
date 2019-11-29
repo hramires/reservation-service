@@ -7,15 +7,18 @@ public class ReservationDto {
     private String checkout;
     private Integer roomsQuantity;
     private Double payment;
+    private String cpf;
 
     public ReservationDto() {
     }
 
-    public ReservationDto(String name, String checkin, String checkout, Integer roomsQuantity, Double payment) {
+    public ReservationDto(String name, String checkin, String checkout, Integer roomsQuantity, Double payment, String cpf) {
         this.name = name;
         this.checkin = checkin;
         this.checkout = checkout;
         this.roomsQuantity = roomsQuantity;
+        this.payment = payment;
+        this.cpf = cpf;
     }
 
     public String getName() {
@@ -56,5 +59,13 @@ public class ReservationDto {
 
     public void setPayment(Double payment) {
         this.payment = payment;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 }
