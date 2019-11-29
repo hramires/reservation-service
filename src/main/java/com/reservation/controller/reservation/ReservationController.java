@@ -26,12 +26,12 @@ public interface ReservationController {
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/checkout")
-    @ApiOperation(value = "API used to book a new reservation", response = ReservationResponse.class)
+    @ApiOperation(value = "API used to book a new reservation", response = ResponseEntity.class)
     public ResponseEntity checkout(@RequestBody ReservationCheckoutRequest reservationCheckoutRequest);
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/cancel")
-    @ApiOperation(value = "API used to book a new reservation", response = ReservationResponse.class)
+    @ApiOperation(value = "API used to book a new reservation", response = ResponseEntity.class)
     public ResponseEntity cancel(@RequestBody ReservationCancelRequest reservationCheckoutRequest);
 
 
