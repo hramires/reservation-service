@@ -1,5 +1,7 @@
 package com.reservation.controller.reservation;
 
+import com.reservation.controller.reservation.request.ReservationCancelRequest;
+import com.reservation.controller.reservation.request.ReservationCheckoutRequest;
 import com.reservation.controller.reservation.request.ReservationRequest;
 import com.reservation.controller.reservation.response.ReservationResponse;
 import com.reservation.dto.ReservationDto;
@@ -27,6 +29,16 @@ public class ReservationControllerImpl implements ReservationController {
     @Override
     public ResponseEntity postReservations(ReservationRequest reservationRequest) {
         reservationService.save(reservationRequest);
+        return ResponseEntity.ok().build();
+    }
+
+    @Override
+    public ResponseEntity checkout(ReservationCheckoutRequest reservationCheckoutRequest) {
+        return ResponseEntity.ok().build();
+    }
+
+    @Override
+    public ResponseEntity cancel(ReservationCancelRequest reservationCheckoutRequest) {
         return ResponseEntity.ok().build();
     }
 
