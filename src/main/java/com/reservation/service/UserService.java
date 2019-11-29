@@ -24,7 +24,7 @@ public class UserService {
     public User findByDocument(String cpf) {
         Optional<User> optionalUser = userRepository.findByDocument(cpf);
         if (optionalUser.isPresent()) {
-            return userRepository.findByDocument(cpf).get();
+            return optionalUser.get();
         }
         return null;
     }
@@ -50,5 +50,13 @@ public class UserService {
     public List<CostumerDto> findAll() {
         List<User> users = userRepository.findAll();
         return userConverter.convertFromDomain(users);
+    }
+
+    public User findByName(String name) {
+        List<User> users = userRepository.findByName(name);
+        if (!users.isEmpty()) {
+            return users.get(0);
+        }
+        return null;
     }
 }
