@@ -18,7 +18,11 @@ public class UserConverter {
     }
 
     private User convert(UserDto userDto) {
-        return new User(userDto.getName(), userDto.getCpf().replace(".", ""), userDto.getTelefone(), userDto.getDeletado());
+        return new User(userDto.getName(), getDocument(userDto), userDto.getTelefone(), userDto.getDeletado());
+    }
+
+    private String getDocument(UserDto userDto) {
+        return userDto.getCpf().replace(".", "").replace("-", "");
     }
 
     public List<CostumerDto> convertFromDomain(List<User> users) {

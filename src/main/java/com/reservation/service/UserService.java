@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,7 +27,20 @@ public class UserService {
 
     public void save(List<UserDto> usersDto) {
         List<User> users = userConverter.convertFromDto(usersDto);
-        users.stream().map(user -> userRepository.save(user)).collect(Collectors.toList());
+        users.stream().map(user -> saveUser(user)).collect(Collectors.toList());
+    }
+
+    private User saveUser(User user) {
+        Optional<User> optionalUser = userRepository.findByDocument(user.getDocument());
+        if (optionalUser.isPresent()) {
+            User existsUser = optionalUser.get();
+            existsUser.setName(user.getName());
+            existsUser.setActive(user.getActive());
+            existsUser.setPhone(user.getPhone());
+            return userRepository.save(existsUser);
+        } else {
+            return userRepository.save(user);
+        }
     }
 
     public List<CostumerDto> findAll() {
