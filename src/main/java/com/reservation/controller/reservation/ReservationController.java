@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 public interface ReservationController {
@@ -17,7 +18,7 @@ public interface ReservationController {
     public ResponseEntity<ReservationResponse> getReservations();
 
     @CrossOrigin
-    @GetMapping("")
+    @PostMapping("")
     @ApiOperation(value = "API used to book a new reservation", response = ReservationResponse.class)
     public ResponseEntity postReservations(@RequestBody ReservationRequest reservationRequest);
 
