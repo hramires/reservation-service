@@ -20,6 +20,11 @@ public interface ReservationController {
     public ResponseEntity<ReservationResponse> getReservations();
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("/costumers")
+    @ApiOperation(value = "API used to get a list of reservations", response = ReservationResponse.class)
+    public ResponseEntity<ReservationResponse> getReservationsByUser();
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("")
     @ApiOperation(value = "API used to book a new reservation", response = ReservationResponse.class)
     public ResponseEntity postReservations(@RequestBody ReservationRequest reservationRequest);

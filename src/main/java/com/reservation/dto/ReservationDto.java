@@ -6,11 +6,12 @@ public class ReservationDto {
     private String checkin;
     private String checkout;
     private Integer roomsQuantity;
+    private Double payment;
 
     public ReservationDto() {
     }
 
-    public ReservationDto(String name, String checkin, String checkout, Integer roomsQuantity) {
+    public ReservationDto(String name, String checkin, String checkout, Integer roomsQuantity, Double payment) {
         this.name = name;
         this.checkin = checkin;
         this.checkout = checkout;
@@ -49,4 +50,11 @@ public class ReservationDto {
         this.roomsQuantity = roomsQuantity;
     }
 
+    public Double getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Double payment) {
+        this.payment = payment;
+    }
 }

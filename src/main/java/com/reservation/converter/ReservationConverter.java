@@ -22,7 +22,7 @@ public class ReservationConverter {
     }
 
     private ReservationDto convert(Reservation reservation) {
-        return new ReservationDto(getUserName(reservation), reservation.getCheckin(), reservation.getCheckout(), reservation.getRoomsQuantity());
+        return new ReservationDto(getUserName(reservation), reservation.getCheckin(), reservation.getCheckout(), reservation.getRoomsQuantity(), 150.0);
     }
 
     private String getUserName(Reservation reservation) {

@@ -9,6 +9,7 @@ import com.reservation.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.stream.StreamSupport;
 
 @Service
@@ -34,4 +35,8 @@ public class ReservationService {
         return reservationConverter.convert(reservationRepository.findAll());
     }
 
+    public ReservationResponse getReservationsByUser() {
+        List<Reservation> reservations = reservationRepository.findByUserIsNotNull();
+        return reservationConverter.convert(reservations);
+    }
 }
