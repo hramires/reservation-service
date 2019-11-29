@@ -26,7 +26,7 @@ public class ProductService {
     private UserService userService;
 
     public ProductResponse addProduct(ProductRequest productRequest) {
-        User user = userService.findByCpf(productRequest.getDocument());
+        User user = userService.findByDocument(productRequest.getDocument());
         List<Product> products = productConverter.convertToEntities(productRequest.getProducts());
         List<Product> productsSaved = products.stream().map(product -> productRepository.save(product)).collect(Collectors.toList());
         List<ProductDto> productsToResponse = productConverter.convertToResponse(productsSaved);

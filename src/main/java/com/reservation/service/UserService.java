@@ -11,8 +11,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User findByCpf(String cpf) {
-        return userRepository.findByCpf(cpf).get();
+    public User findByDocument(String cpf) {
+        return userRepository.findByDocument(cpf).get();
     }
 
 }

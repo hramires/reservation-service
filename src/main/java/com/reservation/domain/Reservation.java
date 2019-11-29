@@ -1,14 +1,12 @@
 package com.reservation.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
 public class Reservation {
 
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne()
     @JoinColumn(columnDefinition = "user_id", referencedColumnName = "id")
